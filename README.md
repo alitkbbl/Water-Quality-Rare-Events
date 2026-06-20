@@ -1,7 +1,7 @@
 # Water Quality: Rare Event Estimation 
 
 ## Overview
-This repository contains a comprehensive statistical simulation project focused on water quality analysis. The main objective is to model the distribution of chemical parameters (such as pH or Chloramines) and estimate the probability of extreme, hazardous deviations. Since water treatment systems are generally stable, these deviations are considered "Rare Events" ($P(X > \tau)$).
+This repository contains a comprehensive statistical simulation project focused on water quality analysis. The main objective is to model the distribution of chemical parameters (such as pH or Chloramines) and estimate the probability of extreme, hazardous deviations. Since water treatment systems are generally stable, these deviations are considered "Rare Events" $P(X > \tau)$.
 
 ## Project Objectives
 1. **Distribution Fitting:** Identify the underlying probability density function $f(x)$ for the target parameter using real-world data.
