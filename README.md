@@ -8,8 +8,8 @@ A computer simulation project that models a real-world water-quality dataset and
 
 Two full project reports (LaTeX-typeset, with all derivations, tables, and figures) are included in this repository:
 
-- 📄 **[Report — English (EN)](report/report_en.pdf)**
-- 📄 **[Report — Persian (FA)](report/report_fa.pdf)**
+- 📄 **[Report — English (EN)](report/English_Report.pdf)**
+- 📄 **[Report — Persian (FA)](report/Persian_Report.pdf)**
 
 
 Each report walks through the full methodology, mathematical justification, and analytical answers to the project's required questions, including:
