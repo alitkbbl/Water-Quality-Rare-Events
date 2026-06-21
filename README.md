@@ -1,8 +1,6 @@
 # 🧪 Water Quality Rare-Event Estimation
 
-**Distribution Fitting · Accept–Reject Sampling · Monte Carlo · Importance Sampling**
-
-A computer simulation project that models a real-world water-quality dataset and estimates the probability of a rare contamination event (Chloramines exceeding a critical threshold) using classical and variance-reduction Monte Carlo techniques — all core sampling algorithms implemented from scratch, without relying on built-in random-variate generators.
+A computer simulation project that models a real-world water-quality dataset and **estimates the probability of a rare contamination event (Chloramine concentration exceeding a critical threshold)** using classical and variance-reduction Monte Carlo techniques — with all core sampling algorithms implemented from scratch rather than using built‑in random‑variate generators.
 
 ---
 
@@ -15,10 +13,10 @@ Two full project reports (LaTeX-typeset, with all derivations, tables, and figur
 
 
 Each report walks through the full methodology, mathematical justification, and analytical answers to the project's required questions, including:
-- The effect of the covering constant `M` on acceptance rate and runtime.
+- The effect of the covering constant $M$ on acceptance rate and runtime.
 - Tail-thickness analysis and weight stability via Effective Sample Size (ESS).
-- Empirical verification of the `O(N^-1/2)` Monte Carlo convergence rate.
-- Optimization of the Importance Sampling shift parameter `μ_q` and the failure modes of a poorly chosen proposal.
+- Empirical verification of the $O(N^{-1/2})$ Monte Carlo convergence rate.
+- Optimization of the Importance Sampling shift parameter $\mu_q$ and the failure modes of a poorly chosen proposal.
 
   
 ---
@@ -31,8 +29,8 @@ This project builds a complete statistical and computational pipeline to study e
 
 1. **Model the real data** — fit a probability distribution to the `water_potability.csv` dataset (Chloramines was selected as the target variable, since it has no missing values and represents a genuine health-risk parameter).
 2. **Generate synthetic data manually** — implement the **Accept–Reject** algorithm from first principles to sample from the fitted distribution, since ready-made random generators (e.g. `scipy.stats.norm.rvs`) are not allowed.
-3. **Quantify the rare event** — define a critical threshold `τ` corresponding to a true exceedance probability of `γ = 10⁻⁴`.
-4. **Estimate the probability** — first with **Standard (Crude) Monte Carlo**, exposing its weaknesses (zero-estimate phenomenon, high relative error, slow `O(N^-1/2)` convergence), and then with **Importance Sampling**, which shifts the sampling distribution toward the critical region to drastically reduce variance.
+3. **Quantify the rare event** — define a critical threshold $\tau$ corresponding to a true exceedance probability of $\gamma = 10^{-4}$.
+4. **Estimate the probability** — first with **Standard (Crude) Monte Carlo**, exposing its weaknesses (zero-estimate phenomenon, high relative error, slow $O(N^{-1/2})$ convergence), and then with **Importance Sampling**, which shifts the sampling distribution toward the critical region to drastically reduce variance.
 
 The result is a full comparison of how a "boring" naive simulation breaks down on rare events, and how a well-designed importance distribution fixes it — backed by acceptance-rate analysis, convergence plots, importance-weight diagnostics (ESS), and a sensitivity study of the proposal shift parameter.
 
@@ -62,18 +60,18 @@ Water_Quality_Rare_Events/
 The project progresses through four sequential phases, each building on the previous one:
 
 ### 1️⃣ Exploratory Data Analysis & Distribution Fitting
-The Chloramines column is analyzed (mean ≈ 7.12, std ≈ 1.58, skewness ≈ 0, i.e. nearly symmetric). Three candidate distributions — **Normal**, **Gamma**, and **Weibull** — are fit via a manually implemented **Maximum Likelihood Estimation (MLE)** routine and cross-validated against `scipy`. Model selection uses log-likelihood, AIC, BIC, and the Kolmogorov–Smirnov statistic. The **Normal distribution** (μ = 7.1223, σ = 1.5828) is selected as the best-fitting model, and the rare-event threshold is set at **τ ≈ 13.0089**, corresponding to a true exceedance probability of **γ = 10⁻⁴**.
+The Chloramines column is analyzed (mean ≈ 7.12, std ≈ 1.58, skewness ≈ 0, i.e. nearly symmetric). Three candidate distributions — **Normal**, **Gamma**, and **Weibull** — are fit via a manually implemented **Maximum Likelihood Estimation (MLE)** routine and cross-validated against `scipy`. Model selection uses log-likelihood, AIC, BIC, and the Kolmogorov–Smirnov statistic. The **Normal distribution** ($\mu = 7.1223$, $\sigma = 1.5828$) is selected as the best-fitting model, and the rare-event threshold is set at **$\tau \approx 13.0089$**, corresponding to a true exceedance probability of **$\gamma = 10^{-4}$**.
 
 ### 2️⃣ Accept–Reject Sampling
-Using the fitted Normal as the target `f(x)` and a Uniform proposal `g(x)` on `[0, μ + 6σ]`, the covering constant `M` is derived analytically (`M ≈ 4.19`), and 100,000 synthetic samples are generated through a manual Accept–Reject loop. Validity is confirmed via moment matching, a KS test (p ≈ 0.93), and visual histogram comparison. A sweep over proposal widths quantifies the `1/M` acceptance-rate law and its `O(M)` runtime cost — motivating the need for smarter sampling at the tail.
+Using the fitted Normal as the target $f(x)$ and a Uniform proposal $g(x)$ on $[0, \mu + 6\sigma]$, the covering constant $M$ is derived analytically ($M \approx 4.19$), and 100,000 synthetic samples are generated through a manual Accept–Reject loop. Validity is confirmed via moment matching, a KS test ($p \approx 0.93$), and visual histogram comparison. A sweep over proposal widths quantifies the $1/M$ acceptance-rate law and its $O(M)$ runtime cost — motivating the need for smarter sampling at the tail.
 
 ### 3️⃣ Standard Monte Carlo
-The crude estimator `γ̂ = (1/N) Σ I(Xᵢ > τ)` is evaluated at `N = 10³, 10⁴, 10⁵, 10⁶`. The results expose the **zero-estimate phenomenon** (the estimator returns exactly zero in the majority of trials at low `N`) and a relative error that scales as `1/√(Nγ)` — empirically confirming the textbook `O(N^-1/2)` convergence rate on a log-log error plot.
+The crude estimator $\hat{\gamma} = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}(X_i > \tau)$ is evaluated at $N = 10^3, 10^4, 10^5, 10^6$. The results expose the **zero-estimate phenomenon** (the estimator returns exactly zero in the majority of trials at low $N$) and a relative error that scales as $1/\sqrt{N\gamma}$ — empirically confirming the textbook $O(N^{-1/2})$ convergence rate on a log-log error plot.
 
 ### 4️⃣ Importance Sampling
-A proposal distribution `q(x) = N(μ_q = τ, σ_q = σ)` is constructed to concentrate sampling near the rare-event region, with each sample reweighted by `w(x) = f(x)/q(x)` to preserve unbiasedness. This reduces estimator variance by a factor of roughly **2,300–3,200×** relative to crude MC, eliminating the zero-estimate problem entirely and shrinking the relative error from ~103% to ~2% at `N = 10⁴`. The project further studies:
+A proposal distribution $q(x) = \mathcal{N}(\mu_q = \tau,\ \sigma_q = \sigma)$ is constructed to concentrate sampling near the rare-event region, with each sample reweighted by $w(x) = f(x)/q(x)$ to preserve unbiasedness. This reduces estimator variance by a factor of roughly **2,300–3,200×** relative to crude MC, eliminating the zero-estimate problem entirely and shrinking the relative error from ~103% to ~2% at $N = 10^4$. The project further studies:
 - **Tail thickness vs. weight stability** — using Effective Sample Size (ESS) to show why the proposal must have a tail at least as heavy as the target.
-- **Proposal shift optimization** — a U-shaped relative-error curve over `μ_q`, identifying the sweet spot near the threshold and showing how both under-shifting and over-shifting degrade performance.
+- **Proposal shift optimization** — a U-shaped relative-error curve over $\mu_q$, identifying the sweet spot near the threshold and showing how both under-shifting and over-shifting degrade performance.
 
 ---
 
