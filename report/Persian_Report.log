@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.10)  20 JUN 2026 19:59
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.6.10)  21 JUN 2026 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1326,22 +1326,23 @@ Package hyperref Info: Link coloring ON on input line 104.
 \openout4 = `Persian_Report.out'.
 
 \c@lstlisting=\count424
-LaTeX Font Info:    Trying to load font information for U+msa on input line 134
+ [1
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 149
 .
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 134
+LaTeX Font Info:    Trying to load font information for U+msb on input line 149
 .
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-]
-File: ../results/01_Chloramines_distribution_fit.png Graphic file (type bmp)
-<../results/01_Chloramines_distribution_fit.png>
+)
+File: ../results/01_eda_overview.png Graphic file (type bmp)
+<../results/01_eda_overview.png>
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1359,8 +1360,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
 [2]
-File: ../results/02_accept_reject_results.png Graphic file (type bmp)
-<../results/02_accept_reject_results.png>
+File: ../results/01_fit_comparison.png Graphic file (type bmp)
+<../results/01_fit_comparison.png>
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1370,8 +1371,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
 [3]
-File: ../results/03_standard_mc_results.png Graphic file (type bmp)
-<../results/03_standard_mc_results.png>
+File: ../results/02_accept_reject_histograms.png Graphic file (type bmp)
+<../results/02_accept_reject_histograms.png>
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1381,14 +1382,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
 [4]
-Overfull \hbox (1.4141pt too wide) in paragraph at lines 352--353
-[]\TU/XBNiloofar(0)/m/n/12 برای عبور از محدودیت روش مونت‌کارلو استاندارد، از تک
-نیک نمونه‌گیری اهمیت []\TU/TimesNewRoman(0)/m/n/12 (Importance Sampling)[] \TU/
-XBNiloofar(0)/m/n/12 استفاده[]
- []
 
-File: ../results/04_IS_Strategy.png Graphic file (type bmp)
-<../results/04_IS_Strategy.png>
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 265.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 265.
+
+File: ../results/02_acceptance_vs_M.png Graphic file (type bmp)
+<../results/02_acceptance_vs_M.png>
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.99652pt, for example:
@@ -1405,10 +1408,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
 [6]
-File: ../results/05_SMC_vs_IS_Efficiency_Comparison.png Graphic file (type bmp)
-
-<../results/05_SMC_vs_IS_Efficiency_Comparison.png>
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.99652pt, for example:
@@ -1417,6 +1416,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
 [7]
+File: ../results/03_mc_convergence.png Graphic file (type bmp)
+<../results/03_mc_convergence.png>
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.99652pt, for example:
@@ -1424,21 +1426,62 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
 
-[8] (./Persian_Report.aux)
+[8]
+File: ../results/04_importance_sampling.png Graphic file (type bmp)
+<../results/04_importance_sampling.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.99652pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.99652pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
+
+[9]
+File: ../results/04_weight_tails_Q2.png Graphic file (type bmp)
+<../results/04_weight_tails_Q2.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.99652pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.99652pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
+
+[10]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.99652pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.99652pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
+
+[11]
+File: ../results/04_proposal_shift_Q4.png Graphic file (type bmp)
+<../results/04_proposal_shift_Q4.png>
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.99652pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.99652pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.99652pt}.
+
+[12] (./Persian_Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `Persian_Report.out' has not changed.
-(rerunfilecheck)             Checksum: C5663A1FFC9884E483ABC058EF039FD1;3306.
+(rerunfilecheck)             Checksum: 5E873BE7739CF8DF3754F385950DCD3C;5499.
  ) 
 Here is how much of TeX's memory you used:
- 34999 strings out of 468168
- 770250 string characters out of 5432815
- 1235857 words of memory out of 5000000
- 63078 multiletter control sequences out of 15000+600000
- 633078 words of font info for 103 fonts, out of 8000000 for 9000
+ 35004 strings out of 468168
+ 770397 string characters out of 5432815
+ 1236857 words of memory out of 5000000
+ 63073 multiletter control sequences out of 15000+600000
+ 636628 words of font info for 123 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,13n,108p,1191b,618s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,108p,1191b,490s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Persian_Report.pdf (9 pages).
+Output written on Persian_Report.pdf (13 pages).
