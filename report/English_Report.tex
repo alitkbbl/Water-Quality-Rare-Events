@@ -429,19 +429,17 @@
 	\]
 	If the weights are uniform, $ESS \approx N$, and if one sample receives an infinite weight, $ESS \to 1$.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.95\textwidth]{../results/04_weight_tails_Q2.png}
-		\caption{Comparison of weight distributions under different proposal distribution tail-thickness settings and their effect on the stability of the IS estimator.}
-		\label{fig:weight-distributions}
-	\end{figure}
-	
-	\textbf{Analysis of ESS results:}
-	
-	\begin{itemize}
-		\item \textbf{Lighter tail ($\sigma_q = 0.5\sigma$):} The ESS value drops sharply, and the ratio $ESS/N$ reaches the negligible value $0.0002$. This shows that the entire credibility of the estimate rests on only a few samples with very large weights, and severe instability has occurred.
-		\item \textbf{Heavier tail ($\sigma_q = 1.5\sigma$):} In this case, the function $q(x)$ keeps the denominator large, the weights remain bounded and small, and the ratio $ESS/N$ is much more desirable, namely $0.0170$. This proves that, for protection against variance explosion, the distribution $q$ should be chosen wider than $f$.
-	\end{itemize}
+As clearly illustrated in Figure \ref{fig:weight-tails-analysis}, selecting a proposal distribution with lighter tails (red curve) causes the importance weight function to grow exponentially, driving the logarithm of the weights to astronomically large values (up to the order of $10^{60}$). This behavior directly leads to the divergence of the second moment and, consequently, an infinite estimator variance. In contrast, the heavier-tailed proposal distribution (green curve) exhibits a well-bounded and stable behavior throughout the domain.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{../results/04_weight_tails_Q2.png}
+	\caption{Impact of proposal-tail thickness on importance sampling. From left to right: exponential growth of the importance weight function under a lighter-tailed proposal, the enormous spread in the histogram of log-weights, and the increasing second moment indicating variance explosion. These behaviors are contrasted with the bounded and stable performance obtained using a heavier-tailed proposal distribution.}
+	\label{fig:weight-tails-analysis}
+\end{figure}
+
+The practical consequences of this structural difference are also clearly reflected in the Effective Sample Size (ESS). In the lighter-tailed case ($\sigma_q = 0.5\sigma$), a small number of samples with extremely large weights dominate the estimator, as evidenced by the weight histogram. As a result, the ESS collapses dramatically, yielding an $\mathrm{ESS}/N$ ratio of only $0.0002$, which indicates severe estimator instability and an effective breakdown of the sampling procedure. By contrast, in the heavier-tailed case ($\sigma_q = 1.5\sigma$), the proposal density $q(x)$ remains sufficiently large in the tails, preventing the importance weights from becoming excessively large. Consequently, the weights remain well-behaved and the $\mathrm{ESS}/N$ ratio improves substantially to $0.0170$. Together, these quantitative results and visual observations confirm a fundamental principle of importance sampling: \textbf{to ensure stability and avoid variance explosion, the proposal distribution should possess tails at least as heavy as, and preferably heavier than, those of the target distribution.}
+
 	
 	\section{Optimization of the Shift Parameter and Reasons for IS Failure}
 	
