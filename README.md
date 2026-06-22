@@ -18,7 +18,6 @@ Each report walks through the full methodology, mathematical justification, and 
 - Empirical verification of the $O(N^{-1/2})$ Monte Carlo convergence rate.
 - Optimization of the Importance Sampling shift parameter $\mu_q$ and the failure modes of a poorly chosen proposal.
 
-  
 ---
 
 ## 📌 Overview
